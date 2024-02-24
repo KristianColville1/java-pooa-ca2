@@ -9,5 +9,15 @@ package ca2;
  * @author kristian
  */
 public class ConsoleMenu {
-    
+    // static fields
+    static Boolean appRunning = false;
+    /**
+     * Static method start is the entry point using the console menu
+     * system.
+     * 
+     * Responsible for calling console menu application initialization logic.
+     */
+    public static void start(){
+        appRunning = true; // set the app as on
+    }
 }
