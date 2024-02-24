@@ -9,5 +9,7 @@ package ca2;
  * @author kristian
  */
 public class Manager extends Employee {
-    
+    // instance fields
+    private String username;
+    private String password;
 }
