@@ -9,29 +9,39 @@ package ca2;
  * @author kristian
  */
 public class Manager extends Employee {
+
     // instance fields
     private String username;
     private String password;
-    
+
     /**
      * ------------------------------------------------Getter Methods
      */
     /**
      * Getter method for retrieving manager username
+     *
      * @return the username of the manager
      */
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
-    
+
     /**
      * Getter method for retrieving the manager password
+     *
      * @return the password
      */
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
     /**
      * ------------------------------------------------Setter Methods
      */
+    /**
+     * Setter method for modifying the username of the manager
+     * @param username to be used as the new username
+     */
+    public void setUsername(String username){
+        this.username = username;
+    }
 }
