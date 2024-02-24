@@ -15,14 +15,29 @@ public class Manager extends Employee {
     private String password;
 
     /**
-     * Default Constructor for Manager
+     * Default Constructor for Manager.
+     *
+     * Calls the superclass default constructor and initializes the username and
+     * password instance fields.
      */
-    public Manager(){
+    public Manager() {
         super();
         this.username = "defaultusername";
         this.password = "password";
     }
-    
+
+    /**
+     * Overloaded Constructor for Manager.
+     *
+     * Calls the superclass overloaded constructor for the name and email
+     * address. Also initializes subclass instance fields username and password.
+     */
+    public Manager(String name, String email, String username, String password) {
+        super(name, email);
+        this.username = username;
+        this.password = password;
+    }
+
     /**
      * ------------------------------------------------Getter Methods
      */
