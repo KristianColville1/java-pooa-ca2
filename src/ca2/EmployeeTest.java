@@ -22,14 +22,28 @@ public class EmployeeTest {
         Employee emp3 = new Employee("Tom Thumb", "tt@gmail.com");
 
         /**
-         * declares and initializes the projectGroup array 
+         * Declares and initializes the projectGroup array 
          * with the employee objects above.
          */
         Employee[] projectGroup = {emp1, emp2, emp3};
         
-        // prints out the value of the nextEmpNum for each employee
+        /**
+         * Prints out the value of the nextEmpNum for each employee in
+         * the projectGroup array
+         */ 
         for(Employee emp : projectGroup){
             System.out.println(emp.getNextEmpNum());
+        }
+        
+        /**
+         * Displays the name of the employee in projectGroup array if the 
+         * employee number is above 'm'
+         */
+        int m = 0;
+        for(Employee emp : projectGroup){
+            if(emp.getEmployeeNumber() > m){
+                System.out.println(emp.getEmployeeName());
+            }
         }
     }
 
