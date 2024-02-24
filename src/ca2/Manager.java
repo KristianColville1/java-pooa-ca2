@@ -17,11 +17,19 @@ public class Manager extends Employee {
      * ------------------------------------------------Getter Methods
      */
     /**
-     * Getter method for manager username
+     * Getter method for retrieving manager username
      * @return the username of the manager
      */
     public String getUsername(){
-        return this.username;
+        return username;
+    }
+    
+    /**
+     * Getter method for retrieving the manager password
+     * @return the password
+     */
+    public String getPassword(){
+        return password;
     }
     /**
      * ------------------------------------------------Setter Methods
