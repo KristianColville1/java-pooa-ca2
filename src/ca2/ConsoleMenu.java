@@ -68,4 +68,13 @@ public class ConsoleMenu {
         System.out.println("        Employee Management System");
         System.out.println("-------------------------------------------");
     }
+    
+        
+    /**
+     * Static Runnable method for stopping the application
+     * @return Runnable to switch off app
+     */
+    private static Runnable stopApplication(){
+        return () -> appRunning = false;
+    }
 }
