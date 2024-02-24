@@ -21,9 +21,9 @@ public class Employee {
      * Default constructor for Employee class object.
      */
     public Employee(){
-        this.name = "";
-        this.email = "";
-        this.empNum = this.nextEmpNum;
+        this.name = "John Doe";
+        this.email = "johndoe@gmail.com";
+        this.empNum = this.nextEmpNum++;
     }
     
     /**
@@ -34,6 +34,6 @@ public class Employee {
     public Employee(String name, String email){
         this.name = name;
         this.email = email;
-        this.empNum = this.nextEmpNum;
+        this.empNum = this.nextEmpNum++;
     }
 }
