@@ -4,6 +4,9 @@
  */
 package ca2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author kristian colville
@@ -50,6 +53,14 @@ public class EmployeeTest {
                     "kristiancolville96@gmail.com", 
                     "Gnomeo", 
                     "smurf");
+            
+            // creates list of managers
+            List<Manager> users = new ArrayList<Manager>();
+            users.add(manager);
+            
+            // passes in the company and list of users to console menu
+            Company company = new Company("Business Gnómes Ltd.");
+            ConsoleMenu.start(users, company);
         } catch (Exception e) {
             System.out.println(e);
         }
