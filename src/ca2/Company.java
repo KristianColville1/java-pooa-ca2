@@ -4,10 +4,14 @@
  */
 package ca2;
 
+import java.util.ArrayList;
+
 /**
- *
+ * 
  * @author kristian
  */
 public class Company {
-    
+    // instance fields
+    private String companyName;
+    private ArrayList<Employee> staff;
 }
