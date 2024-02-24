@@ -22,4 +22,12 @@ public class Company {
         this.companyName = "CompanyName";
         this.staff = new ArrayList<Employee>();
     }
+    
+    /**
+     * Overloaded Constructor for Company
+     */
+    public Company(String name){
+        this.companyName = name;
+        this.staff = new ArrayList<Employee>();
+    }
 }
