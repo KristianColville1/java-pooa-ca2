@@ -43,6 +43,13 @@ public class EmployeeTest {
                     System.out.println(emp.getEmployeeName());
                 }
             }
+            
+            // creates a manager with username and password
+            Manager manager = new Manager(
+                    "Kristian Colville", 
+                    "kristiancolville96@gmail.com", 
+                    "Gnomeo", 
+                    "smurf");
         } catch (Exception e) {
             System.out.println(e);
         }
