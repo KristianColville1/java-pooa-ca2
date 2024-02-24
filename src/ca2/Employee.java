@@ -56,4 +56,29 @@ public class Employee {
     public String getEmployeeEmail(){
         return email;
     }
+    
+    /**
+     * Getter method for returning the employee number of the Employee
+     * @return 
+     */
+    public int getEmployeeNumber(){
+        return empNum;
+    }
+    
+    /**
+     * ------------------------------------------------Setter Methods
+     */
+    
+    /**
+     * Setter method for modifying the employee email
+     * @param email address of the new value for the employee
+     * @throws IllegalArgumentException if the email is 3 characters or less
+     */
+    public void setEmail(String email) throws IllegalArgumentException{
+        if(email.length() <= 3){
+            throw new IllegalArgumentException(
+                    "Email address must contain more than 3 characters");
+        }
+        this.email = email;
+    }
 }
