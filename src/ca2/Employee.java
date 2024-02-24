@@ -35,8 +35,8 @@ public class Employee {
      */
     public Employee(String name, String email) {
         this.name = name;
-        this.email = email;
         this.empNum = this.nextEmpNum++;
+        this.email = checkEmailAddress(email);
     }
 
     /**
@@ -83,13 +83,12 @@ public class Employee {
             throw new IllegalArgumentException(
                     "Email address must contain more than 3 characters");
         }
-        this.email = email;
+        this.email = checkEmailAddress(email);
     }
-    
+
     /**
      * ------------------------------------------------Static Methods
      */
-    
     /**
      * Getter method for returning the current value of the nextEmpNum
      *
@@ -97,5 +96,28 @@ public class Employee {
      */
     public static int getNextEmpNum() {
         return nextEmpNum;
+    }
+
+    /**
+     * ------------------------------------------------Business Logic Methods
+     */
+    /**
+     * Checks email addresses using regex pattern.
+     *
+     * If the email matches the regex it returns it otherwise throws exception.
+     *
+     * Regex taken from:
+     * https://emaillistvalidation.com/blog/the-power-of-regular-expressions-in-email-validation-a-comprehensive-guide/
+     *
+     * @param email the email address to validate
+     * @return true if the email address is valid, false otherwise
+     */
+    private String checkEmailAddress(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        boolean isValid = email.matches(emailRegex);
+        if (!isValid) {
+            throw new IllegalArgumentException("Email address is invalid");
+        }
+        return email;
     }
 }
