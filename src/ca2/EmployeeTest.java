@@ -58,7 +58,7 @@ public class EmployeeTest {
             List<Manager> users = new ArrayList<>();
             users.add(manager);
             
-            // passes in the company and list of users to console menu
+            // passes in list of users to console menu
             ConsoleMenu.start(users);
         } catch (Exception e) {
             System.out.println(e);
