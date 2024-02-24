@@ -25,9 +25,27 @@ public class Company {
     
     /**
      * Overloaded Constructor for Company
+     * @param name of the company
      */
     public Company(String name){
         this.companyName = name;
         this.staff = new ArrayList<Employee>();
+    }
+    
+    /**
+     * ------------------------------------------------Getter Methods
+     */
+    
+    /**
+     * ------------------------------------------------Utility Methods
+     */
+    /**
+     * Utility method for adding a new employee object to the staff array
+     * list.
+     * 
+     * @param emp is the employee object being added
+     */
+    public void addNewStaff(Employee emp){
+        staff.add(emp);
     }
 }
