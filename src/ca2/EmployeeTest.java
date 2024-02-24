@@ -21,6 +21,16 @@ public class EmployeeTest {
         Employee emp2 = new Employee("Ann Banana", "ab@gmail.com");
         Employee emp3 = new Employee("Tom Thumb", "tt@gmail.com");
 
+        /**
+         * declares and initializes the projectGroup array 
+         * with the employee objects above.
+         */
+        Employee[] projectGroup = {emp1, emp2, emp3};
+        
+        // prints out the value of the nextEmpNum for each employee
+        for(Employee emp : projectGroup){
+            System.out.println(emp.getNextEmpNum());
+        }
     }
 
 }
