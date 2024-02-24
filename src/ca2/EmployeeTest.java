@@ -28,12 +28,9 @@ public class EmployeeTest {
         Employee[] projectGroup = {emp1, emp2, emp3};
         
         /**
-         * Prints out the value of the nextEmpNum for each employee in
-         * the projectGroup array
+         * Prints out the current value of nextEmpNum
          */ 
-        for(Employee emp : projectGroup){
-            System.out.println(emp.getNextEmpNum());
-        }
+        System.out.println(Employee.getNextEmpNum());
         
         /**
          * Displays the name of the employee in projectGroup array if the 

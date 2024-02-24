@@ -70,15 +70,6 @@ public class Employee {
     }
 
     /**
-     * Getter method for returning the current value of the nextEmpNum
-     *
-     * @return the current value of nextEmpNum
-     */
-    public int getNextEmpNum() {
-        return nextEmpNum;
-    }
-
-    /**
      * ------------------------------------------------Setter Methods
      */
     /**
@@ -93,5 +84,18 @@ public class Employee {
                     "Email address must contain more than 3 characters");
         }
         this.email = email;
+    }
+    
+    /**
+     * ------------------------------------------------Static Methods
+     */
+    
+    /**
+     * Getter method for returning the current value of the nextEmpNum
+     *
+     * @return the current value of nextEmpNum
+     */
+    public static int getNextEmpNum() {
+        return nextEmpNum;
     }
 }
