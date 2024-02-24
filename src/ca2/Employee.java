@@ -77,6 +77,9 @@ public class Employee {
     /**
      * Setter method for modifying the employee email
      *
+     * If the email address is 3 characters or less in length it fails. Sends
+     * the email address to be checked by calling checkEmailAddress(email)
+     *
      * @param email address of the new value for the employee
      * @throws IllegalArgumentException if the email is 3 characters or less
      */
@@ -112,6 +115,7 @@ public class Employee {
      * https://emaillistvalidation.com/blog/the-power-of-regular-expressions-in-email-validation-a-comprehensive-guide/
      *
      * @param email the email address to validate
+     * @throws IllegalArgumentException if the email address fails the regex
      * @return email if valid
      */
     private String checkEmailAddress(String email) {
@@ -135,12 +139,12 @@ public class Employee {
      * true. Then we check for null and type behaviour in the second condition
      * which is false. Finally we check the state of the object which is the
      * employee number.
-     * 
-     * If the employee objects being compared share the same
-     * employee number they are the same object.
-     * 
-     * We ensure that if our employee is part of a collection that no duplicates
-     * will be added.
+     *
+     * If the employee objects being compared share the same employee number
+     * they are the same object.
+     *
+     * We ensure that if our employee is part of a hash based collection that no
+     * duplicates will be added.
      *
      * @param obj to compare instance with
      * @return true if the object is an Employee with the same employee number
@@ -156,20 +160,21 @@ public class Employee {
         Employee employee = (Employee) obj; // cast and compare
         return empNum == employee.empNum; // the sate to check -> 'empNum'
     }
-    
+
     /**
-     * Object Contract method overrides the hashCode method to generate a
-     * hash code based on the employee number 'empNum'.
-     * 
-     * This method is crucial for hash based collections like a hash set.
-     * We can ensure that the employee objects are identified as duplicates
-     * in hash based collections if they have the same employee number.
-     * 
+     * Object Contract method overrides the hashCode method to generate a hash
+     * code based on the employee number 'empNum'.
+     *
+     * This method is crucial for hash based collections like a hash set. We can
+     * ensure that the employee objects are identified as duplicates in hash
+     * based collections if they have the same employee number.
+     *
      * To be used with the above overridden method 'equals'.
+     *
      * @return a hash code for the employee object
      */
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return Objects.hash(empNum);
     }
 }
