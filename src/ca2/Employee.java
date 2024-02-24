@@ -120,4 +120,38 @@ public class Employee {
         }
         return email;
     }
+
+    /**
+     * ------------------------------------------------Object Contract Methods
+     */
+    /**
+     * Object Contract method overrides the equals method to compare employee
+     * objects based on the employee number 'empNum'. Must be overridden with
+     * hashCode() method.
+     *
+     * Implements default behaviour and check if the same instance, if so then
+     * true. Then we check for null and type behaviour in the second condition
+     * which is false. Finally we check the state of the object which is the
+     * employee number.
+     * 
+     * If the employee objects being compared share the same
+     * employee number they are the same object.
+     * 
+     * We ensure that if our employee is part of a collection that no duplicates
+     * will be added.
+     *
+     * @param obj to compare instance with
+     * @return true if the object is an Employee with the same employee number
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true; // same instance
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false; // null & type
+        }
+        Employee employee = (Employee) obj; // cast and compare
+        return empNum == employee.empNum; // the sate to check -> 'empNum'
+    }
 }
