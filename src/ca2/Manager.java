@@ -12,4 +12,18 @@ public class Manager extends Employee {
     // instance fields
     private String username;
     private String password;
+    
+    /**
+     * ------------------------------------------------Getter Methods
+     */
+    /**
+     * Getter method for manager username
+     * @return the username of the manager
+     */
+    public String getUsername(){
+        return this.username;
+    }
+    /**
+     * ------------------------------------------------Setter Methods
+     */
 }
