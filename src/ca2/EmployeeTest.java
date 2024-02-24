@@ -6,9 +6,11 @@ package ca2;
 
 /**
  *
- * @author kristian
+ * @author kristian colville
+ * @student sba23246
+ * @github https://github.com/KristianColville1/java-pooa-ca2
  */
-public class CA2 {
+public class EmployeeTest {
 
     /**
      * @param args the command line arguments
