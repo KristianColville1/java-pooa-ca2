@@ -36,4 +36,16 @@ public class Employee {
         this.email = email;
         this.empNum = this.nextEmpNum++;
     }
+    
+    /**
+     * ------------------------------------------------Getter Methods
+     */
+    
+    /**
+     * Getter method for returning the name of the Employee
+     * @return name of the employee
+     */
+    public String getEmployeeName(){
+        return name;
+    }
 }
