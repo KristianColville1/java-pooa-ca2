@@ -4,6 +4,8 @@
  */
 package ca2;
 
+import java.util.Objects;
+
 /**
  *
  * @author kristian
@@ -127,7 +129,7 @@ public class Employee {
     /**
      * Object Contract method overrides the equals method to compare employee
      * objects based on the employee number 'empNum'. Must be overridden with
-     * hashCode() method.
+     * hashCode() method below.
      *
      * Implements default behaviour and check if the same instance, if so then
      * true. Then we check for null and type behaviour in the second condition
@@ -153,5 +155,21 @@ public class Employee {
         }
         Employee employee = (Employee) obj; // cast and compare
         return empNum == employee.empNum; // the sate to check -> 'empNum'
+    }
+    
+    /**
+     * Object Contract method overrides the hashCode method to generate a
+     * hash code based on the employee number 'empNum'.
+     * 
+     * This method is crucial for hash based collections like a hash set.
+     * We can ensure that the employee objects are identified as duplicates
+     * in hash based collections if they have the same employee number.
+     * 
+     * To be used with the above overridden method 'equals'.
+     * @return a hash code for the employee object
+     */
+    @Override
+    public int hashCode(){
+        return Objects.hash(empNum);
     }
 }
