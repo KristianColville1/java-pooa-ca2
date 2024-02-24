@@ -1,29 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ca2;
 
 import java.util.HashMap;
 import java.util.List;
 
-/**
- *
- * @author kristian
- */
 public class ConsoleMenu {
 
-    // static fields
+    // Static Fields
     private static final Company company = new Company("Business Gnómes Ltd.");
     private static boolean appRunning = true;
-    private static HashMap<String, String> credentials;
+    private static HashMap<String, String> credentials = new HashMap<>();
 
     /**
+     * -----------------------------------------------Initialization Methods
+     */
+    /**
      * Static method start is the entry point using the console menu system.
-     *
      * Responsible for calling console menu application initialization logic.
-     *
      * Turns the application on and wraps the application loop in a try catch.
+     *
+     * @param allowedUsers list of users allowed to use console menu
      */
     public static void start(List<Manager> allowedUsers) {
         addUsersCredentials(allowedUsers);
@@ -34,14 +29,12 @@ public class ConsoleMenu {
         } catch (Exception e) {
             System.out.println(e);
         }
-
     }
 
     /**
-     * Static method addUsersCredentials adds the list of users credentials to
-     * the credentials hash map.
+     * Adds the list of users credentials to the credentials hash map.
      *
-     * @param users with credentials to check for using console menu.
+     * @param users list of users with access
      */
     private static void addUsersCredentials(List<Manager> users) {
         for (Manager emp : users) {
@@ -50,17 +43,10 @@ public class ConsoleMenu {
     }
 
     /**
-     * Static method runApplication
-     *
-     * Responsible for application logic flow.
+     * -----------------------------------------------Utility Methods
      */
-    private static void runApplication() {
-        getWelcomeMenu();
-        boolean loggedIn = isLoggedIn();
-    }
-
     /**
-     * Static getter method for outputting welcome menu
+     * Outputs the welcome menu to the terminal
      */
     private static void getWelcomeMenu() {
         System.out.println("\n");
@@ -68,13 +54,36 @@ public class ConsoleMenu {
         System.out.println("        Employee Management System");
         System.out.println("-------------------------------------------");
     }
-    
-        
+
     /**
-     * Static Runnable method for stopping the application
-     * @return Runnable to switch off app
+     * Displays login information to user for entering details and validates
+     * them.
+     *
+     * @return
      */
-    private static Runnable stopApplication(){
+    private static boolean isLoggedIn() {
+        stopApplication();
+        return false;
+    }
+
+    /**
+     * Responsible for the application logic flow.
+     */
+    private static void runApplication() {
+        getWelcomeMenu();
+        boolean loggedIn = isLoggedIn();
+    }
+
+    /**
+     * -----------------------------------------------Concurrency Methods
+     */
+    /**
+     * Returns a Runnable lambda expression for stopping the application by
+     * setting appRunning to false.
+     *
+     * @return Runnable to stop the application
+     */
+    private static Runnable stopApplication() {
         return () -> appRunning = false;
     }
 }
