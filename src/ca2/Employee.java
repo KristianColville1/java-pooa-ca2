@@ -110,7 +110,7 @@ public class Employee {
      * https://emaillistvalidation.com/blog/the-power-of-regular-expressions-in-email-validation-a-comprehensive-guide/
      *
      * @param email the email address to validate
-     * @return true if the email address is valid, false otherwise
+     * @return email if valid
      */
     private String checkEmailAddress(String email) {
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";

@@ -14,4 +14,12 @@ public class Company {
     // instance fields
     private String companyName;
     private ArrayList<Employee> staff;
+    
+    /**
+     * Default Constructor for Company
+     */
+    public Company(){
+        this.companyName = "CompanyName";
+        this.staff = new ArrayList<Employee>();
+    }
 }
