@@ -58,4 +58,18 @@ public class Company {
     public void addNewStaff(Employee emp) {
         staff.add(emp);
     }
+    
+    /**
+     * Utility method for iterating over the staff of employees and printing
+     * the names of the employees who's employee number is greater than the 
+     * parameter employeeNumber
+     * @param employeeNumber to check above when iterating
+     */
+    public void listEmployees(int employeeNumber){
+        for(Employee emp : staff){
+            if(emp.getEmployeeNumber() > employeeNumber){
+                System.out.println(emp.getEmployeeName());
+            }
+        }
+    }
 }
