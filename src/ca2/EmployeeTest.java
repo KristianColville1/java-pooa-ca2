@@ -16,7 +16,11 @@ public class EmployeeTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // 3 employee objects created
+        Employee emp1 = new Employee("Joe Bloggs", "jb@gmail.com");
+        Employee emp2 = new Employee("Ann Banana", "ab@gmail.com");
+        Employee emp3 = new Employee("Tom Thumb", "tt@gmail.com");
+
     }
-    
+
 }
