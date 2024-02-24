@@ -4,7 +4,7 @@
  */
 package ca2;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -14,14 +14,14 @@ public class Company {
 
     // instance fields
     private String companyName;
-    private ArrayList<Employee> staff;
+    private HashSet<Employee> staffSet;
 
     /**
      * Default Constructor for Company
      */
     public Company() {
         this.companyName = "CompanyName";
-        this.staff = new ArrayList<Employee>();
+        this.staffSet = new HashSet<Employee>();
     }
 
     /**
@@ -31,7 +31,7 @@ public class Company {
      */
     public Company(String name) {
         this.companyName = name;
-        this.staff = new ArrayList<Employee>();
+        this.staffSet = new HashSet<Employee>();
     }
 
     /**
@@ -44,7 +44,7 @@ public class Company {
      * @return the number of staff members
      */
     public int getStaffNumber() {
-        return staff.size();
+        return staffSet.size();
     }
 
     /**
@@ -56,7 +56,7 @@ public class Company {
      * @param emp is the employee object being added
      */
     public void addNewStaff(Employee emp) {
-        staff.add(emp);
+        staffSet.add(emp);
     }
 
     /**
@@ -74,7 +74,7 @@ public class Company {
      * @param empNum identifies the employee object to remove
      */
     public void removeStaff(int empNum) {
-        String message = staff.removeIf(
+        String message = staffSet.removeIf(
                 emp -> emp.getEmployeeNumber() == empNum) ?
                 "Removing employee success" : "Employee does not exist";
         System.out.println(message);
@@ -88,7 +88,7 @@ public class Company {
      * @param employeeNumber to check above when iterating
      */
     public void listEmployees(int employeeNumber) {
-        for (Employee emp : staff) {
+        for (Employee emp : staffSet) {
             if (emp.getEmployeeNumber() > employeeNumber) {
                 System.out.println(emp.getEmployeeName());
             }
