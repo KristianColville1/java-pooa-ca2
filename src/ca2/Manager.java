@@ -15,6 +15,15 @@ public class Manager extends Employee {
     private String password;
 
     /**
+     * Default Constructor for Manager
+     */
+    public Manager(){
+        super();
+        this.username = "defaultusername";
+        this.password = "password";
+    }
+    
+    /**
      * ------------------------------------------------Getter Methods
      */
     /**
