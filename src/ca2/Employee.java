@@ -66,6 +66,14 @@ public class Employee {
     }
     
     /**
+     * Getter method for returning the current value of the nextEmpNum
+     * @return the current value of nextEmpNum
+     */
+    public int getNextEmpNum(){
+        return nextEmpNum;
+    }
+    
+    /**
      * ------------------------------------------------Setter Methods
      */
     
