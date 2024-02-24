@@ -48,4 +48,12 @@ public class Employee {
     public String getEmployeeName(){
         return name;
     }
+    
+    /**
+     * Getter method for returning the email of the Employee
+     * @return email address of the employee
+     */
+    public String getEmployeeEmail(){
+        return email;
+    }
 }
