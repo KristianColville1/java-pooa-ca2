@@ -58,16 +58,29 @@ public class Company {
     public void addNewStaff(Employee emp) {
         staff.add(emp);
     }
-    
+
     /**
-     * Utility method for iterating over the staff of employees and printing
-     * the names of the employees who's employee number is greater than the 
+     * Utility method for removing an employee object out of the staff array list
+     * if the employee number matches the parameter given.
+     * 
+     * Uses a lambda expression to filter through the staff array list and
+     * remove the employee object if the employee numbers match.
+     * @param empNum identifies the employee object to remove
+     */
+    public void removeStaff(int empNum) {
+        staff.removeIf(emp -> emp.getEmployeeNumber() == empNum);
+    }
+
+    /**
+     * Utility method for iterating over the staff of employees and printing the
+     * names of the employees who's employee number is greater than the
      * parameter employeeNumber
+     *
      * @param employeeNumber to check above when iterating
      */
-    public void listEmployees(int employeeNumber){
-        for(Employee emp : staff){
-            if(emp.getEmployeeNumber() > employeeNumber){
+    public void listEmployees(int employeeNumber) {
+        for (Employee emp : staff) {
+            if (emp.getEmployeeNumber() > employeeNumber) {
                 System.out.println(emp.getEmployeeName());
             }
         }
