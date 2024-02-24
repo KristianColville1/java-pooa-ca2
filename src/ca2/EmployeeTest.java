@@ -55,12 +55,11 @@ public class EmployeeTest {
                     "smurf");
             
             // creates list of managers
-            List<Manager> users = new ArrayList<Manager>();
+            List<Manager> users = new ArrayList<>();
             users.add(manager);
             
             // passes in the company and list of users to console menu
-            Company company = new Company("Business Gnómes Ltd.");
-            ConsoleMenu.start(users, company);
+            ConsoleMenu.start(users);
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -4,6 +4,9 @@
  */
 package ca2;
 
+import java.util.HashMap;
+import java.util.List;
+
 /**
  *
  * @author kristian
@@ -11,7 +14,9 @@ package ca2;
 public class ConsoleMenu {
 
     // static fields
-    static Boolean appRunning = false;
+    private static final Company company = new Company("Business Gnómes Ltd.");
+    private static Boolean appRunning;
+    private static HashMap<String, String> credentials;
 
     /**
      * Static method start is the entry point using the console menu system.
@@ -20,7 +25,8 @@ public class ConsoleMenu {
      * 
      * Turns the application on and wraps the application loop in a try catch.
      */
-    public static void start() {
+    public static void start(List<Manager> allowedUsers) {
+        addUsersCredentials(allowedUsers);
         appRunning = true; // set the app as on
         try {
             while (appRunning) {
@@ -33,11 +39,23 @@ public class ConsoleMenu {
     }
     
     /**
+     * Static method addUsersCredentials adds the list of users credentials
+     * to the credentials hash map.
+     * 
+     * @param users with credentials to check for using console menu.
+     */
+    private static void addUsersCredentials(List<Manager> users){
+        for(Manager emp : users){
+            credentials.put(emp.getUsername(), emp.getPassword());
+        }
+    }
+    
+    /**
      * Static method runApplication
      * 
      * Responsible for application logic flow.
      */
-    public static void runApplication(){
+    private static void runApplication(){
         appRunning = false;
     }
 }
