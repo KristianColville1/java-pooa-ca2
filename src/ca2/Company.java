@@ -60,15 +60,24 @@ public class Company {
     }
 
     /**
-     * Utility method for removing an employee object out of the staff array list
-     * if the employee number matches the parameter given.
-     * 
+     * Utility method for removing an employee object out of the staff array
+     * list if the employee number matches the parameter given.
+     *
      * Uses a lambda expression to filter through the staff array list and
      * remove the employee object if the employee numbers match.
+     * 
+     * The lambda expression returns true or false so we can use it in a ternary 
+     * operator to provide feedback to manager.
+     * 
+     * Assigns the value to message and outputs it to the console.
+     *
      * @param empNum identifies the employee object to remove
      */
     public void removeStaff(int empNum) {
-        staff.removeIf(emp -> emp.getEmployeeNumber() == empNum);
+        String message = staff.removeIf(
+                emp -> emp.getEmployeeNumber() == empNum) ?
+                "Removing employee success" : "Employee does not exist";
+        System.out.println(message);
     }
 
     /**
