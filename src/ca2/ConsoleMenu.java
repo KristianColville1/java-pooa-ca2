@@ -34,6 +34,19 @@ public class ConsoleMenu {
     }
 
     /**
+     * Responsible for the application logic flow.
+     */
+    private static void runApplication() {
+        DisplayText.getWelcomeMenu();
+        
+        if(isLoggedIn()){
+            System.out.println("Logged in successfully");
+        } else {
+            System.out.println("Login Fail");
+        }
+    }
+
+    /**
      * Adds the list of users credentials to the credentials hash map.
      *
      * @param users list of users with access
@@ -47,36 +60,33 @@ public class ConsoleMenu {
     /**
      * -----------------------------------------------Utility Methods
      */
-
     /**
      * Displays login information to user for entering details and validates
      * them.
      *
-     * @return
+     * @return true or false if user logged in
      */
     private static boolean isLoggedIn() {
+        // get user credentials
         DisplayText.enterUsername();
         String username = InputUtils.getUserInput();
         DisplayText.enterPassword();
         String password = InputUtils.getUserInput();
-        stopApplication();
-        return false;
-    }
 
-    /**
-     * Responsible for the application logic flow.
-     */
-    private static void runApplication() {
-        DisplayText.getWelcomeMenu();
-        boolean loggedIn = isLoggedIn();
+        // check they can log in
+        boolean loggedIn = InputUtils.validateCredentials(
+                username, password, credentials);
+        if (loggedIn) {
+            return true;
+        }
+        return false;
     }
 
     /**
      * -----------------------------------------------Concurrency Methods
      */
     /**
-     * For stopping the application by
-     * setting appRunning to false.
+     * For stopping the application by setting appRunning to false.
      *
      * @return Runnable to stop the application
      */

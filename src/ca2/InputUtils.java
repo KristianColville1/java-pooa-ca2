@@ -48,8 +48,8 @@ public class InputUtils {
      * @return true or false to validate user
      */
     public static boolean validateCredentials(
-            String username, 
-            String password, 
+            String username,
+            String password,
             HashMap<String, String> credentials) {
         if (credentials.containsKey(username)) {
             return credentials.get(username).equals(password);
