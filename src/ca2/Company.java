@@ -34,6 +34,7 @@ public class Company {
      */
     public Company(String name) {
         this.companyName = name;
+        this.staff = new ArrayList<Employee>();
         this.staffSet = new HashSet<Employee>();
     }
 
@@ -56,10 +57,19 @@ public class Company {
     /**
      * Utility method for adding a new employee object to the staff array list.
      *
+     * Uses a HashSet which prevents duplicates before adding to the staff
+     * ArrayList.
+     *
      * @param emp is the employee object being added
+     * @throws IllegalArgumentException if a duplicate is detected
      */
     public void addNewStaff(Employee emp) {
-        staffSet.add(emp);
+        if (!staffSet.add(emp)) {
+            throw new IllegalArgumentException(
+                    "Employee with empNum"
+                    + emp.getEmployeeNumber() + " already exists.");
+        }
+        staff.add(emp);
     }
 
     /**
@@ -68,18 +78,18 @@ public class Company {
      *
      * Uses a lambda expression to filter through the staff array list and
      * remove the employee object if the employee numbers match.
-     * 
-     * The lambda expression returns true or false so we can use it in a ternary 
+     *
+     * The lambda expression returns true or false so we can use it in a ternary
      * operator to provide feedback to manager.
-     * 
+     *
      * Assigns the value to message and outputs it to the console.
      *
      * @param empNum identifies the employee object to remove
      */
     public void removeStaff(int empNum) {
         String message = staffSet.removeIf(
-                emp -> emp.getEmployeeNumber() == empNum) ?
-                "Removing employee success" : "Employee does not exist";
+                emp -> emp.getEmployeeNumber() == empNum)
+                        ? "Removing employee success" : "Employee does not exist";
         System.out.println(message);
     }
 
