@@ -45,15 +45,6 @@ public class ConsoleMenu {
     /**
      * -----------------------------------------------Utility Methods
      */
-    /**
-     * Outputs the welcome menu to the terminal
-     */
-    private static void getWelcomeMenu() {
-        System.out.println("\n");
-        System.out.println("-------------------------------------------");
-        System.out.println("        Employee Management System");
-        System.out.println("-------------------------------------------");
-    }
 
     /**
      * Displays login information to user for entering details and validates
@@ -70,7 +61,7 @@ public class ConsoleMenu {
      * Responsible for the application logic flow.
      */
     private static void runApplication() {
-        getWelcomeMenu();
+        DisplayText.getWelcomeMenu();
         boolean loggedIn = isLoggedIn();
     }
 
