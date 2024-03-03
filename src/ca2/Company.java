@@ -67,7 +67,7 @@ public class Company {
     public void addNewStaff(Employee emp) {
         if (!staffSet.add(emp)) {
             throw new IllegalArgumentException(
-                    "Employee with empNum"
+                    "Employee with empNum = "
                     + emp.getEmployeeNumber() + " already exists.");
         }
         staff.add(emp);
