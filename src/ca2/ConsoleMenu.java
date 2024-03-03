@@ -9,6 +9,7 @@ public class ConsoleMenu {
     private static Company company;
     private static boolean appRunning = true;
     private static HashMap<String, String> credentials = new HashMap<>();
+    private static String user;
 
     /**
      * -----------------------------------------------Initialization Methods
@@ -38,12 +39,33 @@ public class ConsoleMenu {
      */
     private static void runApplication() {
         DisplayText.getWelcomeMenu();
-        
-        if(isLoggedIn()){
-            System.out.println("Logged in successfully");
-        } else {
-            System.out.println("Login Fail");
+        authenticateUser(); // handles authentication flow
+        boolean usingApp = true;
+        while (usingApp) {
+            DisplayText.showLoggedInUserMenuOptions();
+            String input = InputUtils.getUserInput();
+            int choice = 0;
+            switch (choice) {
+                case 1:
+                    // list users
+                    break;
+                case 2:
+                    // add new employee
+                    break;
+                case 3:
+                    // remove an employee
+                    break;
+                case 4:
+                    // logout and exit
+                    usingApp = false;
+                    break;
+                default:
+                    // not a valid option
+                    break;
+            }
         }
+        stopApplication();
+
     }
 
     /**
@@ -77,9 +99,24 @@ public class ConsoleMenu {
         boolean loggedIn = InputUtils.validateCredentials(
                 username, password, credentials);
         if (loggedIn) {
+            user = username; // this is the user logged in
             return true;
         }
         return false;
+    }
+
+    /**
+     * Static utility method authenticates the user. Outputs login success to
+     * the user. If the login fails it will close the application.
+     */
+    private static void authenticateUser() {
+        if (isLoggedIn()) {
+            System.out.println("Logged in successfully");
+        } else {
+            System.out.println("Login Fail");
+            System.out.println("Closing application...");
+            stopApplication();
+        }
     }
 
     /**
