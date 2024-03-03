@@ -42,8 +42,8 @@ public class Company {
      * ------------------------------------------------Getter Methods
      */
     /**
-     * Getter method for retrieving the number of employees in the staff array
-     * list
+     * Getter method for retrieving the number of employees in the staffSet
+     * HashSet
      *
      * @return the number of staff members
      */
@@ -55,7 +55,8 @@ public class Company {
      * ------------------------------------------------Utility Methods
      */
     /**
-     * Utility method for adding a new employee object to the staff array list.
+     * Utility method for adding a new employee object to the staffSet HashSet
+     * and the staff ArrayList.
      *
      * Uses a HashSet which prevents duplicates before adding to the staff
      * ArrayList.
@@ -73,15 +74,15 @@ public class Company {
     }
 
     /**
-     * Utility method for removing an employee object out of the staff array
-     * list if the employee number matches the parameter given.
+     * Utility method for removing an employee object out of the staffSet
+     * HashSet and staff ArrayList if the employee number matches the parameter
+     * given.
      *
      * Uses a lambda expression to filter through the staff array list and
      * remove the employee object if the employee numbers match.
      *
-     * The lambda expression returns true or false. I assign the result of this
-     * to staffExists and then conditionally remove it from staff array list
-     * also.
+     * The lambda expression returns true or false. staffExits is assigned the
+     * result of this and then conditionally removes it.
      *
      * Outputs the result of trying to remove employee to the console depending
      * on the flow.
