@@ -51,22 +51,8 @@ public class ConsoleMenu {
                     listEmployees();
                     break;
                 case 2:
-//                    try {
-//                    // add new employee
-//                    System.out.println(
-//                            "\nPlease enter the new employee name:");
-//                    String name = InputUtils.getUserInput();
-//                    System.out.println(
-//                            "\nPlease enter the employee email address:");
-//                    String email = InputUtils.getUserInput();
-//                    Employee emp = new Employee(name, email);
-//                    company.addNewStaff(emp);
-//                } catch (IllegalArgumentException e) {
-//                    System.out.println(
-//                            "Invalid input: "
-//                            + e.getMessage() + " Please try again.");
-//                    // Optionally, log the error or handle it as needed
-//                }
+                    // add employees
+                    addEmployees();
                     break;
                 case 3:
                     // remove an employee
@@ -157,7 +143,7 @@ public class ConsoleMenu {
 
     /**
      * Static method to handle listing the employees.
-     * 
+     *
      * Tries to get the users selection as integer and either lists the
      * employees by the empNum selected or returns to main menu.
      */
@@ -174,6 +160,41 @@ public class ConsoleMenu {
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid selection, please try again.");
             System.out.println("Returning to main menu...\n");
+        }
+    }
+
+    /**
+     * Static method allows user to enter an employee and continue adding them.
+     *
+     * Uses a while loop to decide if should keep adding.
+     *
+     */
+    private static void addEmployees() {
+        boolean adding = true;
+
+        while (adding) {
+            try {
+                System.out.println(
+                        "\nPlease enter the new employee name:");
+                String name = InputUtils.getUserInput();
+                System.out.println(
+                        "\nPlease enter the employee email address:");
+                String email = InputUtils.getUserInput();
+                Employee emp = new Employee(name, email);
+                company.addNewStaff(emp);
+                System.out.println("Employee added successfully.");
+            } catch (IllegalArgumentException e) {
+                // do nothing, returns to main menu
+            }
+
+            // gives the option to continue adding employees
+            System.out.println("\nDo you want to add another employee?");
+            System.out.println("--------(1) Continue Adding Employees");
+            System.out.println("--------Hit any other value to exit\n");
+            int choice = getChoice(InputUtils.getUserInput());
+            if (choice != 1) {
+                adding = false; // exits loop for adding employees
+            }
         }
     }
 
