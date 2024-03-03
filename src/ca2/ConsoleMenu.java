@@ -69,6 +69,23 @@ public class ConsoleMenu {
     }
 
     /**
+     * Converts the users string input to an integer.
+     *
+     * @param input given by the user
+     * @return the selection made by the user
+     */
+    private static int getChoice(String input) {
+        int selection = 0;
+        try {
+            selection = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println(
+                    "Thats not a valid option, please try again");
+        }
+        return selection;
+    }
+
+    /**
      * Adds the list of users credentials to the credentials hash map.
      *
      * @param users list of users with access
@@ -124,8 +141,6 @@ public class ConsoleMenu {
      */
     /**
      * For stopping the application by setting appRunning to false.
-     *
-     * @return Runnable to stop the application
      */
     private static void stopApplication() {
         appRunning = false;
