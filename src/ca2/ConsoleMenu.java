@@ -8,8 +8,7 @@ public class ConsoleMenu {
     // Static Fields
     private static Company company;
     private static boolean appRunning = true;
-    private static HashMap<String, String> credentials = new HashMap<>();
-    private static String user;
+    private static final HashMap<String, String> credentials = new HashMap<>();
 
     /**
      * -----------------------------------------------Initialization Methods
@@ -39,34 +38,38 @@ public class ConsoleMenu {
      */
     private static void runApplication() {
         DisplayText.getWelcomeMenu();
-        authenticateUser(); // handles authentication flow
-        boolean usingApp = true;
-        while (usingApp) {
-            DisplayText.showLoggedInUserMenuOptions();
-            String input = InputUtils.getUserInput();
-            int choice = getChoice(input);
-            switch (choice) {
-                case 1:
-                    // list employees
-                    listEmployees();
-                    break;
-                case 2:
-                    // add employees
-                    addEmployees();
-                    break;
-                case 3:
-                    // remove employees
-                    removeEmployees();
-                    break;
-                case 4:
-                    // logout and exit
-                    usingApp = false;
-                    break;
-                default:
-                    // not a valid option
-                    break;
+        boolean canContinue = authenticateUser(); // handles authentication flow
+        if (canContinue) {
+            boolean usingApp = true;
+            while (usingApp) {
+                DisplayText.showLoggedInUserMenuOptions();
+                String input = InputUtils.getUserInput();
+                int choice = getChoice(input);
+                // decides what to do based on the user choice
+                switch (choice) {
+                    case 1:
+                        // list employees
+                        listEmployees();
+                        break;
+                    case 2:
+                        // add employees
+                        addEmployees();
+                        break;
+                    case 3:
+                        // remove employees
+                        removeEmployees();
+                        break;
+                    case 4:
+                        // logout and exit
+                        usingApp = false;
+                        break;
+                    default:
+                        // not a valid option
+                        break;
+                }
             }
         }
+
         stopApplication();
 
     }
@@ -116,26 +119,23 @@ public class ConsoleMenu {
         String password = InputUtils.getUserInput();
 
         // check they can log in
-        boolean loggedIn = InputUtils.validateCredentials(
+        return InputUtils.validateCredentials(
                 username, password, credentials);
-        if (loggedIn) {
-            user = username; // this is the user logged in
-            return true;
-        }
-        return false;
     }
 
     /**
      * Static utility method authenticates the user. Outputs login success to
      * the user. If the login fails it will close the application.
      */
-    private static void authenticateUser() {
+    private static boolean authenticateUser() {
         if (isLoggedIn()) {
             System.out.println("Logged in successfully");
+            return true;
         } else {
             System.out.println("Login Fail");
             System.out.println("Closing application...");
-            appRunning = false;
+            stopApplication();
+            return false;
         }
     }
 
@@ -182,16 +182,18 @@ public class ConsoleMenu {
                 company.addNewStaff(emp);
                 System.out.println("Employee added successfully.");
             } catch (IllegalArgumentException e) {
-                // do nothing, returns to main menu
+                System.out.println(e.getMessage());
             }
 
             // gives the option to continue adding employees
-            System.out.println("\nDo you want to add another employee?");
-            System.out.println("--------(1) Continue Adding Employees");
-            System.out.println("--------Hit any other value to exit\n");
-            int choice = getChoice(InputUtils.getUserInput());
-            if (choice != 1) {
-                adding = false; // exits loop for adding employees
+            DisplayText.doesUserWantToAddMoreEmployees();
+            try {
+                int choice = getChoice(InputUtils.getUserInput());
+                if (choice != 1) {
+                    adding = false;
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -217,13 +219,16 @@ public class ConsoleMenu {
                         + e.getMessage() + ". Please enter a valid employee number.");
             }
 
-            System.out.println("\nDo you want to add remove employee?");
-            System.out.println("--------(1) Continue removing Employees");
-            System.out.println("--------Hit any other value to exit\n");
-            int choice = getChoice(InputUtils.getUserInput());
-            if (choice != 1) {
-                removing = false;
+            DisplayText.doesUserWantToRemoveMoreEmployees();
+            try {
+                int choice = getChoice(InputUtils.getUserInput());
+                if (choice != 1) {
+                    removing = false;
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
+
         }
     }
 

@@ -47,7 +47,26 @@ public class DisplayText {
         System.out.println("---Please Select an Option below:----------\n");
         System.out.println("        (1) List Employees");
         System.out.println("        (2) Add a New Employee");
-        System.out.println("        (3) Logout and exit");
+        System.out.println("        (3) Remove an Employee");
+        System.out.println("        (4) Logout and exit");
         System.out.println("-------------------------------------------\n");
+    }
+
+    /**
+     * Outputs options to continue adding employees
+     */
+    public static void doesUserWantToAddMoreEmployees() {
+        System.out.println("\nDo you want to add another employee?");
+        System.out.println("--------(1) Continue Adding Employees");
+        System.out.println("--------(2) Exit\n");
+    }
+
+    /**
+     * Outputs options to continue removing employees
+     */
+    public static void doesUserWantToRemoveMoreEmployees() {
+        System.out.println("\nDo you want to remove another employee?");
+        System.out.println("--------(1) Continue removing Employees");
+        System.out.println("--------(2) Exit\n");
     }
 }
