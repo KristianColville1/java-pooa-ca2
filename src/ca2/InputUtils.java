@@ -24,10 +24,12 @@ public class InputUtils {
      */
     public static String getUserInput() {
         String input = "";
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try {
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(System.in));
             input = reader.readLine();
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
         return input;
     }

@@ -6,7 +6,7 @@ import java.util.List;
 public class ConsoleMenu {
 
     // Static Fields
-    private static final Company company = new Company("Business Gnómes Ltd.");
+    private static Company company;
     private static boolean appRunning = true;
     private static HashMap<String, String> credentials = new HashMap<>();
 
@@ -19,9 +19,11 @@ public class ConsoleMenu {
      * Turns the application on and wraps the application loop in a try catch.
      *
      * @param allowedUsers list of users allowed to use console menu
+     * @param company is the company object to use in the console
      */
-    public static void start(List<Manager> allowedUsers) {
+    public static void start(List<Manager> allowedUsers, Company companyToUse) {
         addUsersCredentials(allowedUsers);
+        company = companyToUse;
         try {
             while (appRunning) {
                 runApplication();
@@ -53,6 +55,10 @@ public class ConsoleMenu {
      * @return
      */
     private static boolean isLoggedIn() {
+        DisplayText.enterUsername();
+        String username = InputUtils.getUserInput();
+        DisplayText.enterPassword();
+        String password = InputUtils.getUserInput();
         stopApplication();
         return false;
     }
@@ -69,12 +75,12 @@ public class ConsoleMenu {
      * -----------------------------------------------Concurrency Methods
      */
     /**
-     * Returns a Runnable lambda expression for stopping the application by
+     * For stopping the application by
      * setting appRunning to false.
      *
      * @return Runnable to stop the application
      */
-    private static Runnable stopApplication() {
-        return () -> appRunning = false;
+    private static void stopApplication() {
+        appRunning = false;
     }
 }
