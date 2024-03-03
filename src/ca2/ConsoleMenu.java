@@ -44,16 +44,35 @@ public class ConsoleMenu {
         while (usingApp) {
             DisplayText.showLoggedInUserMenuOptions();
             String input = InputUtils.getUserInput();
-            int choice = 0;
+            int choice = getChoice(input);
             switch (choice) {
                 case 1:
-                    // list users
+                    // list employees
+                    listEmployees();
                     break;
                 case 2:
-                    // add new employee
+//                    try {
+//                    // add new employee
+//                    System.out.println(
+//                            "\nPlease enter the new employee name:");
+//                    String name = InputUtils.getUserInput();
+//                    System.out.println(
+//                            "\nPlease enter the employee email address:");
+//                    String email = InputUtils.getUserInput();
+//                    Employee emp = new Employee(name, email);
+//                    company.addNewStaff(emp);
+//                } catch (IllegalArgumentException e) {
+//                    System.out.println(
+//                            "Invalid input: "
+//                            + e.getMessage() + " Please try again.");
+//                    // Optionally, log the error or handle it as needed
+//                }
                     break;
                 case 3:
                     // remove an employee
+//                    System.out.println("\n\nPlease enter the employee number to remove that staff member:");
+//                    int employeeToRemove = getChoice(InputUtils.getUserInput());
+//                    company.removeStaff(employeeToRemove);
                     break;
                 case 4:
                     // logout and exit
@@ -133,6 +152,28 @@ public class ConsoleMenu {
             System.out.println("Login Fail");
             System.out.println("Closing application...");
             stopApplication();
+        }
+    }
+
+    /**
+     * Static method to handle listing the employees.
+     * 
+     * Tries to get the users selection as integer and either lists the
+     * employees by the empNum selected or returns to main menu.
+     */
+    private static void listEmployees() {
+        try {
+            System.out.println(
+                    "Please select an employee number to start with:");
+            int empNum = getChoice(InputUtils.getUserInput());
+            System.out.println(
+                    "\n\n-------------RESULTS-----------------");
+            System.out.println(
+                    "---Listed by employee number (asc)---\n\n");
+            company.listEmployees(empNum);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid selection, please try again.");
+            System.out.println("Returning to main menu...\n");
         }
     }
 
