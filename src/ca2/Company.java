@@ -4,6 +4,7 @@
  */
 package ca2;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -14,6 +15,7 @@ public class Company {
 
     // instance fields
     private String companyName;
+    private ArrayList<Employee> staff;
     private HashSet<Employee> staffSet;
 
     /**
@@ -21,6 +23,7 @@ public class Company {
      */
     public Company() {
         this.companyName = "CompanyName";
+        this.staff = new ArrayList<Employee>();
         this.staffSet = new HashSet<Employee>();
     }
 
