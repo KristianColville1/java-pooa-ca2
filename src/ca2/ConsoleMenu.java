@@ -55,10 +55,8 @@ public class ConsoleMenu {
                     addEmployees();
                     break;
                 case 3:
-                    // remove an employee
-//                    System.out.println("\n\nPlease enter the employee number to remove that staff member:");
-//                    int employeeToRemove = getChoice(InputUtils.getUserInput());
-//                    company.removeStaff(employeeToRemove);
+                    // remove employees
+                    removeEmployees();
                     break;
                 case 4:
                     // logout and exit
@@ -137,7 +135,7 @@ public class ConsoleMenu {
         } else {
             System.out.println("Login Fail");
             System.out.println("Closing application...");
-            stopApplication();
+            appRunning = false;
         }
     }
 
@@ -194,6 +192,37 @@ public class ConsoleMenu {
             int choice = getChoice(InputUtils.getUserInput());
             if (choice != 1) {
                 adding = false; // exits loop for adding employees
+            }
+        }
+    }
+
+    /**
+     * Static method removes employees.
+     *
+     * Uses a while loop to keep removing employees if the user decides to.
+     */
+    private static void removeEmployees() {
+        boolean removing = true;
+
+        while (removing) {
+            try {
+                System.out.println(
+                        "\n\nPlease enter the employee number"
+                        + " to remove that staff member:");
+                int employeeToRemove = getChoice(InputUtils.getUserInput());
+                company.removeStaff(employeeToRemove);
+            } catch (Exception e) {
+                System.out.println(
+                        "Invalid input: "
+                        + e.getMessage() + ". Please enter a valid employee number.");
+            }
+
+            System.out.println("\nDo you want to add remove employee?");
+            System.out.println("--------(1) Continue removing Employees");
+            System.out.println("--------Hit any other value to exit\n");
+            int choice = getChoice(InputUtils.getUserInput());
+            if (choice != 1) {
+                removing = false;
             }
         }
     }

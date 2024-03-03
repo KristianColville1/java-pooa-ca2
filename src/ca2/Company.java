@@ -98,7 +98,7 @@ public class Company {
             staff.removeIf(emp -> emp.getEmployeeNumber() == empNum);
             System.out.println("Removing employee success");
         } else {
-            System.out.println("Employee does not exist");
+            System.out.println("Employee does not exist? Try again.");
         }
     }
 
