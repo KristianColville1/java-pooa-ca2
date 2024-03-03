@@ -108,7 +108,7 @@ public class Company {
      * @param employeeNumber to check above when iterating
      */
     public void listEmployees(int employeeNumber) {
-        for (Employee emp : staffSet) {
+        for (Employee emp : staff) {
             if (emp.getEmployeeNumber() > employeeNumber) {
                 System.out.println(emp.getEmployeeName());
             }
