@@ -21,6 +21,7 @@ public class DisplayText {
         System.out.println("-------------------------------------------");
         System.out.println("        Employee Management System");
         System.out.println("-------------------------------------------");
+        System.out.println("         Please login to continue\n");
     }
     
     /**
