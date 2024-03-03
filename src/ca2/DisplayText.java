@@ -22,4 +22,18 @@ public class DisplayText {
         System.out.println("        Employee Management System");
         System.out.println("-------------------------------------------");
     }
+    
+    /**
+     * Outputs enter your username
+     */
+    public static void enterUsername(){
+        System.out.println("\nPlease Enter Username (+ hit Enter):");
+    }
+    
+    /**
+     * Outputs enter your password
+     */
+    public static void enterPassword(){
+        System.out.println("\nPlease Enter Password (+ hit Enter):");
+    }
 }
