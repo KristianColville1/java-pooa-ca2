@@ -46,6 +46,16 @@ public class EmployeeTest {
                     System.out.println(emp.getEmployeeName());
                 }
             }
+//            Test duplicates failing success
+//            Company company = new Company();
+//            company.addNewStaff(emp2);
+//            company.addNewStaff(emp2); // fails with IllegalArgumentException
+
+            // Creates the company and adds our employees to it.
+            Company company = new Company("Business Gnómes Ltd.");
+            company.addNewStaff(emp1);
+            company.addNewStaff(emp2);
+            company.addNewStaff(emp3);
             
             // creates a manager with username and password
             Manager manager = new Manager(
@@ -54,12 +64,16 @@ public class EmployeeTest {
                     "Gnomeo", 
                     "smurf");
             
+            // add manager to the company
+            company.addNewStaff(manager);
+            
+            
             // creates list of managers
-            List<Manager> users = new ArrayList<>();
-            users.add(manager);
+            List<Manager> managers = new ArrayList<>();
+            managers.add(manager);
             
             // passes in list of users to console menu
-            ConsoleMenu.start(users);
+            ConsoleMenu.start(managers, company);
         } catch (Exception e) {
             System.out.println(e);
         }
