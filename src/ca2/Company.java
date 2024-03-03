@@ -6,6 +6,7 @@ package ca2;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  *
@@ -104,12 +105,17 @@ public class Company {
     /**
      * Utility method for iterating over the staff of employees and printing the
      * names of the employees who's employee number is greater than the
-     * parameter employeeNumber
+     * parameter employeeNumber.
+     *
+     * Uses an Iterator object to iterate over the staff and output their name
+     * if their employee number is higher than the parameter employeeNumber
      *
      * @param employeeNumber to check above when iterating
      */
     public void listEmployees(int employeeNumber) {
-        for (Employee emp : staff) {
+        Iterator<Employee> iterator = staff.iterator();
+        while (iterator.hasNext()) {
+            Employee emp = iterator.next();
             if (emp.getEmployeeNumber() > employeeNumber) {
                 System.out.println(emp.getEmployeeName());
             }
