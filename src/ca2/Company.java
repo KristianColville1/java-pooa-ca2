@@ -79,18 +79,25 @@ public class Company {
      * Uses a lambda expression to filter through the staff array list and
      * remove the employee object if the employee numbers match.
      *
-     * The lambda expression returns true or false so we can use it in a ternary
-     * operator to provide feedback to manager.
+     * The lambda expression returns true or false. I assign the result of this
+     * to staffExists and then conditionally remove it from staff array list
+     * also.
      *
-     * Assigns the value to message and outputs it to the console.
+     * Outputs the result of trying to remove employee to the console depending
+     * on the flow.
      *
      * @param empNum identifies the employee object to remove
      */
     public void removeStaff(int empNum) {
-        String message = staffSet.removeIf(
-                emp -> emp.getEmployeeNumber() == empNum)
-                        ? "Removing employee success" : "Employee does not exist";
-        System.out.println(message);
+        boolean staffExists = staffSet.removeIf(
+                emp -> emp.getEmployeeNumber() == empNum);
+
+        if (staffExists) {
+            staff.removeIf(emp -> emp.getEmployeeNumber() == empNum);
+            System.out.println("Removing employee success");
+        } else {
+            System.out.println("Employee does not exist");
+        }
     }
 
     /**
